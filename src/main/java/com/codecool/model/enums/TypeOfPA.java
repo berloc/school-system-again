@@ -1,0 +1,7 @@
+package com.codecool.model.enums;
+
+
+public enum TypeOfPA {
+    PYTHONBASICS, PYTHONOOP, WEBBASICS, JAVABASICS, ADVANCEDJAVA, ALGORITHM,
+        TECHINTERVIEW, TRIALINTERVIEW
+}
