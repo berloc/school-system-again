@@ -3,6 +3,7 @@ package com.codecool.model;
 
 import com.codecool.model.enums.Status;
 import com.codecool.model.enums.TypeOfPA;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,10 +28,12 @@ public class PersonalAssessment extends DateWithMentor {
     @Enumerated(EnumType.STRING)
     private Status status;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "student_id")
     private Student student;
 
+    @JsonIgnore
     @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(name = "mentor_personal_assessment",
             joinColumns = @JoinColumn(name = "personal_id", referencedColumnName = "id"),

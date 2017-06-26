@@ -2,6 +2,7 @@ package com.codecool.model;
 
 
 import com.codecool.model.enums.Role;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,12 +29,13 @@ public class Person {
     private Date birthday;
     private String birthPlace;
     private String address;
-//
+
+    @JsonIgnore
     @OneToMany(mappedBy = "to")
     private List<Feedback> givenFeedback;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "from")
     private List<Feedback> gotFeedback;
 
-//    public void addFeedback(Person from, Person to, String feedback) {}
 }

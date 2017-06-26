@@ -2,6 +2,7 @@ package com.codecool.model;
 
 
 import com.codecool.model.enums.Status;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,10 +25,12 @@ public class PrivateMentoring extends DateWithMentor {
     @Enumerated(EnumType.STRING)
     private Status status;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "student_id")
     private Student student;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "mentor_id")
     private Mentor mentor;

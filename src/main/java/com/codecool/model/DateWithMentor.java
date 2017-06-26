@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,6 +23,8 @@ public class DateWithMentor {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
+    @DateTimeFormat(pattern = "yyyy-MM-DD hh:mm")
     private Date date;
     private Place place;
 

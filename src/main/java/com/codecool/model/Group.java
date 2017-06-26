@@ -1,5 +1,6 @@
 package com.codecool.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,9 +24,11 @@ public class Group {
     private Date startDate;
     private String city;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "group", fetch = FetchType.EAGER)
     private List<Student> studentList;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "groupList")
     private List<Mentor> mentorList;
 

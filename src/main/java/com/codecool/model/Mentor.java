@@ -1,6 +1,7 @@
 package com.codecool.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,9 +21,11 @@ public class Mentor extends Person {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "mentor", fetch = FetchType.EAGER)
     private List<Student> studentList;
 
+    @JsonIgnore
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "mentor_group",
             joinColumns = @JoinColumn(name = "mentor_id", referencedColumnName = "id"),
@@ -30,9 +33,11 @@ public class Mentor extends Person {
             uniqueConstraints = @UniqueConstraint(columnNames = {"mentor_id", "group_id"}))
     private List<Group> groupList;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "mentor")
     private List<PrivateMentoring> privateMentoringList;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "mentorList")
     private List<PersonalAssessment> personalAssessmentList;
 
