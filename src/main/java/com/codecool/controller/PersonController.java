@@ -2,6 +2,7 @@ package com.codecool.controller;
 
 
 import com.codecool.model.Person;
+import com.codecool.model.Student;
 import com.codecool.model.enums.Role;
 import com.codecool.repository.PersonRepository;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -36,7 +37,7 @@ public class PersonController {
         try {
             JSONObject rawData = new JSONObject(data);
             if (rawData.get("email").toString().contains("@") && rawData.get("password").toString().length()>= 8) {
-                Person person = mapper.readValue(data, Person.class);
+                Student person = mapper.readValue(data, Student.class);
                 if (personRepository.findByEmail(person.getEmail())==null) {
                     createStudent(person, rawData);
                     response.put("status", "success");
