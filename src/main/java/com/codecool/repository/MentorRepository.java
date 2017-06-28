@@ -11,6 +11,6 @@ public interface MentorRepository extends JpaRepository<Mentor, Integer>{
 
     Mentor findById(Integer id);
 
-    Mentor findByName(String name);
+    Mentor findByFirstName(String name);
 
 }
