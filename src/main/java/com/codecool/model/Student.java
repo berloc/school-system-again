@@ -35,4 +35,8 @@ public class Student extends Person {
     @OneToMany(mappedBy = "student")
     private List<PersonalAssessment> personalAssessmentList;
 
+
+    public Student(String email, String password) {
+        super(email, password);
+    }
 }

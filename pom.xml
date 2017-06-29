@@ -98,6 +98,12 @@
 			<version>4.0.4.RELEASE</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.modelmapper</groupId>
+			<artifactId>modelmapper</artifactId>
+			<version>0.7.4</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
