@@ -1,5 +1,6 @@
 package com.codecool.controller;
 
+import com.codecool.model.Group;
 import com.codecool.model.Mentor;
 import com.codecool.model.PersonalAssessment;
 import com.codecool.model.Student;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
 import java.util.List;
 
 @RequestMapping(value = "/api")
@@ -38,29 +40,36 @@ public class JSONApiController {
     @Autowired
     private PersonalAssessmentRepository personalAssessmentRepository;
 
-
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index() {
         return "index";
     }
 
-
+//    @PreAuthorize("hasRole('ROLE.MENTOR')")
     @RequestMapping(value = "/place", method = RequestMethod.GET)
     public Place[] getPlace() {
         logger.debug("/place route called, collect the places");
         return Place.values();
     }
 
+//    @PreAuthorize("hasRole('ROLE.MENTOR')")
     @RequestMapping(value = "/type", method = RequestMethod.GET)
     public TypeOfPA[] getType() {
         logger.debug("/type route called, collect the type of PA-s");
         return TypeOfPA.values();
     }
 
+//    @PreAuthorize("hasRole('ROLE.MENTOR')")
     @RequestMapping(value = "/status", method = RequestMethod.GET)
     public Status[] getStatus() {
         logger.debug("/status route called, collect the status of PA/PM-s");
         return Status.values();
+    }
+
+    @RequestMapping(value = "/group")
+    public List<Group> getGroup() {
+        logger.debug("/group route called, collect all mentors");
+        return groupRepository.findAll();
     }
 
     @RequestMapping(value = "students/{group}", method = RequestMethod.GET)

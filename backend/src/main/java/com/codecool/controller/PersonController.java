@@ -16,6 +16,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.util.UUID;
 
@@ -30,6 +31,7 @@ public class PersonController {
     @Autowired
     private DtoEntityConverter dtoEntityConverter;
 
+    @Transactional
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     @ResponseBody
     public String registration(@RequestBody @Valid StudentDto studentDto) throws JSONException {
@@ -43,7 +45,6 @@ public class PersonController {
         }
         return response.toString();
     }
-
 
     private void createStudent(Person person) {
         person.setRole(Role.STUDENT);
